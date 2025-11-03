@@ -7,7 +7,7 @@ from flask import Flask, jsonify, request
 def create_api_orders(db_manager):
     api: Namespace = Namespace("orders", description="Order namespace", authorizations=authorizations)
 
-    orders_model = api.model('OrderModel', {'orderID': fields.Integer, 'produktID': fields.Integer, 'invoicenummer': fields.Integer, 'customerID': fields.Integer, 'status': fields.String, 'mængde': fields.Integer, 'lagerID': fields.Integer})
+    orders_model = api.model('OrderModel', {'orderID': fields.Integer, 'produktID': fields.Integer, 'invoicenummer': fields.Integer, 'customerID': fields.Integer, 'status': fields.String, 'mangde': fields.Integer, 'lagerID': fields.Integer})
 
     remove_orders_model = api.model('RemoveOrderModel', {'orderID': fields.Integer})
 
@@ -44,12 +44,12 @@ def create_api_orders(db_manager):
             invoicenummer = api.payload['invoicenummer']
             customerID = api.payload['customerID']
             status = api.payload['status']
-            mængde = api.payload['mængde']
+            mangde = api.payload['mangde']
             lagerID = api.payload['lagerID']
             if ((orderID == 0) or (produktID == 0) or (customerID == 0) or (lagerID == 0)):
                 return jsonify({'message': 'Invalid order'}, 400)
             else:
-                result = db_manager.orders.Insert(produktID, invoicenummer, customerID, status, mængde, lagerID)
+                result = db_manager.orders.Insert(produktID, invoicenummer, customerID, status, mangde, lagerID)
             #orders_list.append({'id': {orderID}, 'produktID': {produktID}, 'warelist': {warelist}, 'total': {total}})
             return result
         
@@ -62,13 +62,13 @@ def create_api_orders(db_manager):
             invoicenummer = api.payload['invoicenummer']
             customerID = api.payload['customerID']
             status = api.payload['status']
-            mængde = api.payload['mængde']
+            mangde = api.payload['mangde']
             lagerID = api.payload['lagerID']
             result = db_manager.orders.GetByID(orderID)
             if result == []:
                 return jsonify({"message": "Order does not exist"}, 400)
             else:    
-                db_manager.orders.UpdateOrder(orderID, produktID, invoicenummer, customerID, status, mængde, lagerID)
+                db_manager.orders.UpdateOrder(orderID, produktID, invoicenummer, customerID, status, mangde, lagerID)
             result = db_manager.orders.GetByID(orderID)
             return result
         

@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: tex33bzc
+      MYSQL_DATABASE: lagersystem
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./SQL_Commands:/docker-entrypoint-initdb.d
+  app:
+    build: .
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      # These env variables match your Python app's config.json
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: lagersystem
+    volumes:
+      - ./src:/app
+      - ./config.json:/app/config.json
+volumes:
+  db_data:

@@ -21,14 +21,14 @@ class OrdersModel:
             return False
 
 
-    def Insert(self, produktID,invoicenummer,customerid,status,mængde,lagerID):
+    def Insert(self, produktID,invoicenummer,customerid,status,mangde,lagerID):
         
         try:
             conn = self.db.get_connection()
             with conn.cursor(dictionary=True) as cursor:
-                query = "INSERT INTO orders (produktID, invoicenummer,customerid,status,mængde,lagerID) VALUES (%s, %s, %s,%s, %s, %s)"
+                query = "INSERT INTO orders (produktID, invoicenummer,customerid,status,mangde,lagerID) VALUES (%s, %s, %s,%s, %s, %s)"
 
-                cursor.execute(query, (produktID, invoicenummer, customerid,status,mængde,lagerID))
+                cursor.execute(query, (produktID, invoicenummer, customerid,status,mangde,lagerID))
                 result = cursor.fetchall()
                 #n_id = cursor.lastrowid
             conn.commit()
@@ -120,12 +120,12 @@ class OrdersModel:
             print("Error getting orders by invoicenumber:", e)
             return False
     
-    def UpdateOrder(self, orderID, produktID,invoicenummer,customerid,status,mængde,lagerID):
+    def UpdateOrder(self, orderID, produktID,invoicenummer,customerid,status,mangde,lagerID):
 
         try:
             conn = self.db.get_connection()
             with conn.cursor(dictionary = True) as cursor:
-                query = f"UPDATE orders SET produktID = {produktID}, invoicenummer = {invoicenummer}, customerid = {customerid}, status = '{status}', mængde = {mængde}, lagerID = {lagerID} WHERE OrderID = {orderID}"
+                query = f"UPDATE orders SET produktID = {produktID}, invoicenummer = {invoicenummer}, customerid = {customerid}, status = '{status}', mangde = {mangde}, lagerID = {lagerID} WHERE OrderID = {orderID}"
                 cursor.execute(query)
                 result = cursor.fetchall()
             conn.commit()
@@ -158,7 +158,7 @@ class OrdersModel:
                      f" produkts.navn,"
                      f" produkts.pris, "
                      f" orders.status, "
-                     f" orders.mængde "
+                     f" orders.mangde "
                      f"FROM orders "
                      f" join produkts on orders.produktID = produkts.produktID"
                      f" join customers on orders.customerid = customers.customerID"
@@ -178,7 +178,7 @@ class OrdersModel:
                 "invoicenummer": myresult[2],
                 "customerID": myresult[3],
                 "status": myresult[4],
-                "mængde": myresult[5],
+                "mangde": myresult[5],
                 "lagerID": myresult[6]
             }
         return result

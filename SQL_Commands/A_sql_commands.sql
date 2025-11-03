@@ -1,4 +1,4 @@
-CREATE TABLE Produkts (
+CREATE TABLE produkts (
     produktID int not null AUTO_INCREMENT,
     pris float not null,
     navn varchar(55) not null,
@@ -20,7 +20,7 @@ CREATE TABLE lager_manger(
     PRimary key (lagermangerID),
     
     FOREIGN KEY (lagerID) REFERENCES lagers(lagerID),
-    FOREIGN KEY (produktID) REFERENCES Produkts(produktID)
+    FOREIGN KEY (produktID) REFERENCES produkts(produktID)
 );
 create table customers(
 	customerid int not null AUTO_INCREMENT,
@@ -36,11 +36,11 @@ create table orders (
     invoicenummer int not null,
     customerid int not null,
     status varchar(55),
-    mængde int not null,
+    mangde int not null,
     lagerID int not null,
     PRimary key (OrderID),
     
-    FOREIGN KEY (produktID) REFERENCES Produkts(produktID),
+    FOREIGN KEY (produktID) REFERENCES produkts(produktID),
     FOREIGN KEY (customerid) REFERENCES customers(customerid),
     FOREIGN KEY (customerid) REFERENCES customers(customerid),
     FOREIGN key (lagerID) REFERENCES lagers(lagerID)

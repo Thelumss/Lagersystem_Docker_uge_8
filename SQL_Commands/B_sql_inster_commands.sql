@@ -1,19 +1,19 @@
-insert into Produkts(pris, navn, status)
+insert into produkts(pris, navn, status)
 value(3.69,"Duck - Breast", "Active");
 
-insert into Produkts(pris, navn, status)
+insert into produkts(pris, navn, status)
 value(9.75,"Seabream Whole Farmed", "Active");
 
-insert into Produkts(pris, navn, status)
+insert into produkts(pris, navn, status)
 value(0.35,"Wine - Red, Lurton Merlot De", "Active");
 
-insert into Produkts(pris, navn, status)
+insert into produkts(pris, navn, status)
 value(2.39,"Artichoke - Hearts, Canned", "Active");
 
-insert into Produkts(pris, navn, status)
+insert into produkts(pris, navn, status)
 value(5.44,"Rum - Spiced, Captain Morgan", "Active");
 
-insert into Produkts(pris, navn, status)
+insert into produkts(pris, navn, status)
 value(5.43,"Cheese Cloth No 100", "Inactive");
 
 insert into lagers(navn)
@@ -62,23 +62,23 @@ value("dennis","dennis@test.com");
 insert into customers(navn,email)
 value("Viktor","Viktor@test.com");
 
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(5,1000,1,"good",10,1);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(1,1004,4,"good",4,2);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(3,1004,4,"good",3,2);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(5,1003,3,"good",30,3);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(2,1003,3,"bad",12,3);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(2,1004,4,"good",1,3);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(5,1005,4,"good",4,1);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(5,1002,2,"good",12,1);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(3,1002,2,"good",14,1);
-insert into orders(produktID,invoicenummer,customerid,status,mængde,lagerID)
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(2,1002,2,"good",11,1);
