@@ -1,10 +1,10 @@
 import mysql.connector
-from database_commands.product import ProductModel
-from database_commands.orders import OrdersModel
-from database_commands.admin import AdminModel
-from database_commands.customers import CustomersModel
-from database_commands.warehouse_inventory import WarehuseInventoryModel
-from database_commands.warehouse import WarehouseModel
+from Database_commands.product import ProductModel
+from Database_commands.orders import OrdersModel
+from Database_commands.admin import AdminModel
+from Database_commands.customers import CustomersModel
+from Database_commands.warehouse_inventory import WarehuseInventoryModel
+from Database_commands.warehouse import WarehouseModel
 
 class DatabaseManager:
     def __init__(self, host, user, password, dbname):

@@ -1,8 +1,8 @@
 from flask import Flask, send_from_directory
 from werkzeug.middleware.proxy_fix import ProxyFix
 from apis import create_api, jwt
-from database_commands.database_manager import DatabaseManager
-from database_commands.product import ProductModel
+from Database_commands.database_manager import DatabaseManager
+from Database_commands.product import ProductModel
 from core.config import Config, ReadConfigFile
 from core.utils import create_admin_user
 from flask_cors import CORS
