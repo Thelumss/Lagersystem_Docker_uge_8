@@ -12,6 +12,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./SQL_Commands:/docker-entrypoint-initdb.d
+
   app:
     build:
       context: .
@@ -23,7 +24,6 @@ services:
       - db
     restart: on-failure
     environment:
-      # These env variables match your Python app's config.json
       MYSQL_HOST: db
       MYSQL_PORT: 3306
       MYSQL_USER: root
@@ -32,6 +32,7 @@ services:
     volumes:
       - ./src:/app
       - ./config.json:/app/config.json
+
   frontEnd:
     build:
       context: ./lager-frontend
