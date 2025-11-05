@@ -1,12 +1,14 @@
 FROM python:3.11
 
-COPY requirements.txt .
+WORKDIR /app
+
+COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install flask_cors
 
-COPY src/ .
-COPY config.json .
+COPY . .
+COPY ../config.json ./config.json
 
 
 EXPOSE 5000
