@@ -13,8 +13,6 @@ class CustomerGet(Resource):
         customer = db_manager.customers.GetById(id)
         return {"customer": customer}, 200
 
-
-# --- Mock Database Layer ---
 class MockDBManager:
     class customers:
         @staticmethod
@@ -24,15 +22,12 @@ class MockDBManager:
 db_manager = MockDBManager()
 
 
-# --- Flask App Setup ---
 app = Flask(__name__)
 api_blueprint = Api(app)
 api_blueprint.add_namespace(api, path="/api/customer")
 
 client = app.test_client()
 
-
-# --- Test ---
 @patch.object(db_manager.customers, "GetById", return_value={"id": 1, "name": "Mock Customer"})
 def test_get_customer_by_id(mock_get_by_id):
     response = client.get("/api/customer/1")
