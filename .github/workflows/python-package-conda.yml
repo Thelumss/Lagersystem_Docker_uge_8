@@ -1,16 +1,22 @@
-name: Python Package using Conda
+# this is the file that determins how the github actions run 
+name: Python api and front end github action
 
+# the on says when the github action should run
 on:
+  # the push says that it should run when ever you push to the repository
   push:
+    # now the branches tell it only when you push to this brach or other you can list others
     branches:
      - main
 
+# the jobs here tell it what to run the github action as in this case a ubuntu with max 5 parallel runnings of it 
 jobs:
   build-linux:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 5
 
+    # step is what github action does ones it is set up mostly all of the is to get ready for the last line where we run the pytest to run all of the test that are in the project
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10

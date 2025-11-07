@@ -1,5 +1,9 @@
+#the docker-compose.yml file is run when you need to run multiple dockerfiles together as in this case the DB, app and the frontend they all need one and other to work corectly or with any real purpose  
 services:
 
+  # the DB container is special in that it does not use a dockerfile that i wrote it use a standerd one from dockerhub for mysql.
+  # that is fine becouse there is noting that special about how the database was set up it just dedded the sql files that tells it how to set up the database and the fake tata to put in it and that comes from the last line under volumes
+  # it runs the sql files from that folder in alpabetical order
   db:
     image: mysql:8.0
     container_name: mysql_db
@@ -13,6 +17,7 @@ services:
       - db_data:/var/lib/mysql
       - ./SQL_Commands:/docker-entrypoint-initdb.d
 
+  # the app service is the docker file for the backend.
   app:
     build:
       context: .
@@ -33,6 +38,7 @@ services:
       - ./src:/app
       - ./config.json:/app/config.json
 
+  # the frontend service is the docker file for the frontend
   frontEnd:
     build:
       context: ./lager-frontend

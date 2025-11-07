@@ -1,9 +1,12 @@
+# the envioronment file is there for set up the github actions
 name: myenv
 channels:
   - conda-forge
+# dependencies obviuly says what base programs that the action needs to run
 dependencies:
   - python=3.11
   - pip
+# in this case the pip followed by all kinds of packages are all the packages that the program needs most if not all of them can also be found in the requirements.txt but it serves a intirly diffrent function 
   - pip:
       - aniso8601==10.0.1
       - attrs==25.4.0
