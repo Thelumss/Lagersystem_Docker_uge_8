@@ -10,7 +10,7 @@ import os
 
 
 ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "http://localhost:4200",
 ]
 
 
@@ -35,7 +35,7 @@ def create_app():
         static_folder="..\\lager-frontend\\dist",
         static_url_path="")
     app.wsgi_app = ProxyFix(app.wsgi_app)
-    CORS(app, origins=["http://localhost:5173"], supports_credentials=True) 
+    CORS(app, origins=["http://localhost:4200"], supports_credentials=True) 
 
     app.config["JWT_SECRET_KEY"] = config.jwt_token
     app.config["DEBUG"] = config.debug

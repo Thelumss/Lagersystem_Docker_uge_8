@@ -26,6 +26,16 @@ def create_api_orders(db_manager):
                 return jsonify({'message': 'Order does not exist'}, 404)
             else:
                 return result
+    
+    @api.route("/ByCustomerID<int:id>")
+    class OrderGet(Resource):
+        @api.doc('Get an order based on CustomerID')
+        def get(self, id):
+            result = db_manager.orders.OrderCustomerView(id)
+            if result == []:
+                return jsonify({'message': 'Order does not exist'}, 404)
+            else:
+                return result
 
     @api.route("/")
     class Order(Resource):

@@ -70,10 +70,11 @@ class OrdersModel:
         
         try:
             conn = self.db.get_connection()
-            conn.execute(f"SELECT * FROM orders where customerid = %s ", (customerid,))
+            cursor = conn.cursor(dictionary=True)  
+            cursor.execute(f"SELECT * FROM orders where customerid = %s ", (customerid,))
 
-            myresult = conn.fetchall()
-        
+            myresult = cursor.fetchall()
+            conn.close()
             return myresult
         except Exception as e:
             print("Error getting orders by customerID:", e)
@@ -153,7 +154,8 @@ class OrdersModel:
         
         try:
             conn = self.db.get_connection()
-            conn.execute(f"SELECT"
+            cursor = conn.cursor(dictionary=True) 
+            cursor.execute(f"SELECT"
                      f" orders.invoicenummer,"
                      f" produkts.navn,"
                      f" produkts.pris, "
@@ -164,7 +166,8 @@ class OrdersModel:
                      f" join customers on orders.customerid = customers.customerID"
                      f" where orders.customerid = %s ", (customerid,))
 
-            myresult = conn.fetchall()
+            myresult = cursor.fetchall()
+            conn.close()
         
             return myresult
         except Exception as e:

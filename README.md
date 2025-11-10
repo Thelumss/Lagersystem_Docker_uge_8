@@ -99,3 +99,6 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 Inspiration, code snippets, etc.
 * https://www.geeksforgeeks.org/python/how-to-run-a-flask-application/
 * https://github.com/JamesWebbTelescope/uge-3
+
+
+docker-compose up --build
