@@ -121,8 +121,32 @@ class WarehuseInventoryModel:
         except Exception as e:
             print(f"Error deleting LagerManger: {e}")
             return False
-        
+    def showSmartAll(self):
+        try:
+            conn = self.db.get_connection()
+            with conn.cursor() as cursor:
+                cursor.execute(f"SELECT"
+                     f" lagers.navn,"
+                     f" produkts.navn,"
+                     f" produkts.pris, "
+                     f" lager_manger.antal "
+                     f"FROM lager_manger"
+                     f" join produkts on lager_manger.produktID = produkts.produktID"
+                     f" join lagers on lager_manger.lagerID = lagers.lagerID"
+                     f" ORDER BY lagers.navn ASC"
+                     #f" where lagers.lagerID = %s ", (id,)
+                     )
 
+
+                myresult = cursor.fetchall()
+                result = []
+            for wh in myresult:
+                result.append(WarehuseInventoryModel._tuple2Dict(wh))
+            return result                 
+        
+        except Exception as e:
+            print("Error getting LagerManger:", e)
+            return False
     def _tuple2Dict(tuple):
         return {
             "id": tuple[0], 

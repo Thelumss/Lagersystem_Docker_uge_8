@@ -1,3 +1,4 @@
+from flask import jsonify
 from flask_restx import Namespace, Resource, fields, Model
 from flask_jwt_extended import jwt_required
 from apis.auth import authorizations
@@ -53,7 +54,17 @@ def create_api_warehouse(db_manager):
             if not wh:
                 return {"error": "database error inserting model"}, 400
             return wh, 201
-
+        
+    @api.route("/homeView")
+    class WarehouseListget(Resource):
+        @api.doc('Get an order based on CustomerID')
+        def get(self,):
+            newtest = db_manager.warehouse_inventory.showSmartAll()
+            if newtest == []:
+                return jsonify({'message': 'Order does not exist'}, 404)
+            else:
+                return newtest
+        
     @api.route('/<int:id>')
     class WarehouseDetail(Resource):
         

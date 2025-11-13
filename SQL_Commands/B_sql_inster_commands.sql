@@ -228,3 +228,6 @@ insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(3,1002,2,"good",14,1);
 insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
 value(2,1002,2,"good",11,1);
+
+insert into orders(produktID,invoicenummer,customerid,status,mangde,lagerID)
+values (2,1012,2,"good",11,1),(20,1002,2,"good",11,1),(22,1012,2,"good",11,1),(25,1012,2,"good",11,1),(28,1012,2,"good",11,1),(30,1012,2,"good",11,1),(35,1012,2,"good",11,1),(12,1012,2,"good",11,1),(16,1012,2,"good",11,1),(38,1012,2,"good",11,1),(11,1012,2,"good",11,1),(14,1012,2,"good",11,1),(19,1012,2,"good",11,1);

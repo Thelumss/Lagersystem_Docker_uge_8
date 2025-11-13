@@ -150,7 +150,7 @@ class OrdersModel:
             print("Error updateing orders status:", e)
             return False
         
-    def OrderCustomerView(self, customerid):
+    def OrderCustomerView(self, invoicenummer):
         
         try:
             conn = self.db.get_connection()
@@ -163,8 +163,7 @@ class OrdersModel:
                      f" orders.mangde "
                      f"FROM orders "
                      f" join produkts on orders.produktID = produkts.produktID"
-                     f" join customers on orders.customerid = customers.customerID"
-                     f" where orders.customerid = %s ", (customerid,))
+                     f" where orders.invoicenummer = %s ", (invoicenummer,))
 
             myresult = cursor.fetchall()
             conn.close()
